@@ -1,12 +1,41 @@
-# The-Netball-Trial-Management-System
-The Netball Trial Management System
-Add CSV export for player registrations
+# Netball Trial Management System
 
-- New export.py module (v1.0) with export_players_csv(), writes a
-  clean CSV with one header row and one row per player - no merged
-  cells or dash placeholders like the old spreadsheet exports
-- New Export tab in main.py (v1.4) with a save-file dialog, defaults
-  the filename to <TrialName>_players.csv
-- Tested against real trial data end to end, output opens cleanly
+VCE Software Development Units 3 & 4 - School-Assessed Task.
+Python 3.12, Tkinter, SQLite. No extra packages needed.
 
-Addresses FR11. PDF trial sheet export (FR10) still to come.
+## Files
+
+- `main.py` - the app (GUI, login, roles)
+- `algorithm.py` - the position rotation algorithm
+- `players.py` - database, CSV export/import, test data
+
+All three need to be in the same folder.
+
+## Running it
+
+```
+python main.py
+```
+
+Default login on first run:
+
+- Username: `coordinator`
+- Password: `coordinator123`
+
+## Loading test players
+
+```
+python -c "import players; players.init_db(); players.create_trial('U13 2026', 'U13', '11/09/2026', 2); tid = players.get_all_trials()[0]['trial_id']; [players.create_player(tid, *p) for p in players.generate_test_players(100)]"
+```
+
+Or put CSV files in the same folder and run:
+
+```
+python players.py
+```
+
+## Checking the algorithm
+
+```
+python algorithm.py
+```
